@@ -22,13 +22,13 @@
 
   <meta name="description" content="基本   定义函数 123function func1 &amp;#123;  echo &quot;This is an example&quot;&amp;#125;  调用函数 1func1  默认返回值 函数中最后一条命令的退出码会作为返回值，可以用标准变量$?获取到   以上内容完整代码： 1234567function func1 &amp;#123;  echo &quot;This is an exam">
 <meta property="og:type" content="article">
-<meta property="og:title" content="“函数”">
+<meta property="og:title" content="shell函数">
 <meta property="og:url" content="https://lemonbottom.github.io/2020/11/26/%E2%80%9C%E5%87%BD%E6%95%B0%E2%80%9D/index.html">
 <meta property="og:site_name" content="筛网柠檬">
 <meta property="og:description" content="基本   定义函数 123function func1 &amp;#123;  echo &quot;This is an example&quot;&amp;#125;  调用函数 1func1  默认返回值 函数中最后一条命令的退出码会作为返回值，可以用标准变量$?获取到   以上内容完整代码： 1234567function func1 &amp;#123;  echo &quot;This is an exam">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-26T05:10:25.000Z">
-<meta property="article:modified_time" content="2020-11-26T05:24:58.133Z">
+<meta property="article:modified_time" content="2020-11-27T05:55:09.382Z">
 <meta property="article:author" content="Chen">
 <meta property="article:tag" content="shell">
 <meta name="twitter:card" content="summary">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>“函数” | 筛网柠檬</title>
+  <title>shell函数 | 筛网柠檬</title>
   
 
 
@@ -164,7 +164,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          “函数”
+          shell函数
         </h1>
 
         <div class="post-meta">
@@ -173,10 +173,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-11-26 13:10:25 / Modified: 13:24:58" itemprop="dateCreated datePublished" datetime="2020-11-26T13:10:25+08:00">2020-11-26</time>
+              <time title="Created: 2020-11-26 13:10:25" itemprop="dateCreated datePublished" datetime="2020-11-26T13:10:25+08:00">2020-11-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-11-27 13:55:09" itemprop="dateModified" datetime="2020-11-27T13:55:09+08:00">2020-11-27</time>
+              </span>
 
           
 
@@ -218,6 +224,32 @@
 <li><input disabled="" type="checkbox"> 退出码必须是0～255</li>
 </ul>
 </li>
+<li><p>获取函数输出</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result=<span class="string">`func`</span></span><br></pre></td></tr></table></figure>
+
+<p> 可以将函数所有的输入给到result，例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span> </span>&#123;</span><br><span class="line">        read -p <span class="string">&quot;enter a value:&quot;</span> value</span><br><span class="line">        echo $[ $value * <span class="number">2</span> ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">h=<span class="string">`f`</span></span><br><span class="line">echo <span class="string">&quot;value is $h&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参数的传递</p>
+<p>函数参数的传递就像脚本参数传递一样：</p>
+<p>$0脚本名，$9是第9个参数，$#是参数数量</p>
+<p>函数中无法获得脚本的参数，想要使用必须传入。</p>
+</li>
+<li><p>变量作用域：全局变量，局部变量</p>
+<p>函数内部声明的变量是局部变量，局部变量也使用local命令声明，与相同名称的全局变量保持隔离</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">local <span class="keyword">var</span>=$[ <span class="number">1</span> * <span class="number">2</span> ]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+</li>
 </ol>
 
     </div>
@@ -240,7 +272,10 @@
     <a href="/2020/11/25/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" rel="prev" title="新的博客">
       <i class="fa fa-chevron-left"></i> 新的博客
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/11/29/Python-Garbage-Collector/" rel="next" title="Python Garbage Collector">
+      Python Garbage Collector <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -312,12 +347,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
